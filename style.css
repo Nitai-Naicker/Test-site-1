@@ -1,0 +1,233 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #111118;
+  --bg-card-hover: #16161f;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.15);
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --red: #c0392b;
+  --text-primary: #f0ece0;
+  --text-secondary: #8a8578;
+  --text-muted: #4a4840;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+  position: relative;
+  text-align: center;
+  padding: 8rem 2rem 6rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-glow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+.header-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+h1 .year {
+  color: var(--gold);
+  display: block;
+}
+
+.header-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Main Layout ── */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+.anime-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Anime Card ── */
+.anime-card {
+  display: flex;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.anime-card:first-child { border-top: 1px solid var(--border); }
+
+.anime-card:hover {
+  background: var(--bg-card-hover);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 4px;
+}
+
+/* Special rank 1 styling */
+.rank-1 .rank-badge {
+  color: var(--gold) !important;
+}
+.rank-1 h2 {
+  color: var(--gold-light);
+}
+
+/* ── Rank Badge ── */
+.rank-badge {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-muted);
+  line-height: 1;
+  min-width: 80px;
+  padding-top: 0.15rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.anime-card:hover .rank-badge {
+  color: var(--text-secondary);
+}
+
+/* ── Card Body ── */
+.card-body { flex: 1; }
+
+.tag {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.card-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.studio {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.synopsis {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ── Badges ── */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  background: rgba(201,168,76,0.05);
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem 4rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  header { padding: 5rem 1.5rem 4rem; }
+  main { padding: 3rem 1.5rem 4rem; }
+
+  .anime-card {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 0;
+  }
+
+  .rank-badge {
+    font-size: 2.2rem;
+    min-width: unset;
+  }
+
+  .anime-card:hover {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+}
